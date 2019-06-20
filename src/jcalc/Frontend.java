@@ -1,17 +1,14 @@
 package jcalc;
 
-public class JCalc extends javax.swing.JFrame {
-
-    public JCalc() {
-
+public class Frontend extends javax.swing.JFrame {
+    
+    public Frontend() {
+ 
         initComponents();
       
     }
     
-    private double a = 0;
-    private double b = 0;
-    private double result = 0;
-    private String op = null;
+    private Backend back = new Backend();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -405,77 +402,44 @@ public class JCalc extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCEActionPerformed
 
     private void jButtonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCActionPerformed
-        
-        a = 0;
-        b = 0;
-        op = null;
+
+        back.clean();
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonCActionPerformed
 
     private void jButtonSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSomaActionPerformed
         
-        a = Double.parseDouble(displayMain.getText());
-        op = "+";
+        back.getValues(displayMain.getText(), "+");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonSomaActionPerformed
 
     private void jButtonSubtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubtActionPerformed
         
-        a = Double.parseDouble(displayMain.getText());
-        op = "-";
+        back.getValues(displayMain.getText(), "-");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonSubtActionPerformed
 
     private void jButtonMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultActionPerformed
         
-        a = Double.parseDouble(displayMain.getText());
-        op = "*";
+        back.getValues(displayMain.getText(), "*");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonMultActionPerformed
 
     private void jButtonDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiviActionPerformed
         
-        a = Double.parseDouble(displayMain.getText());
-        op = "/";
+        back.getValues(displayMain.getText(), "/");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonDiviActionPerformed
 
     private void jButtonResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultActionPerformed
 
-        b = Double.parseDouble(displayMain.getText());
-
-        switch (op){
-
-            case "+":
-
-                result = a + b;
-                displayMain.setText(String.valueOf(result));
-                break;
-
-            case "-":
-
-                result = a - b;
-                displayMain.setText(String.valueOf(result));
-                break;
-
-            case "*":
-
-                result = a * b;
-                displayMain.setText(String.valueOf(result));
-                break;
-
-            case "/":
-
-                result = a / b;
-                displayMain.setText(String.valueOf(result));
-                break;
-
-        }
+        back.getValues(displayMain.getText(), null);
+        displayMain.setText(String.valueOf(back.result));
     
     }//GEN-LAST:event_jButtonResultActionPerformed
 
@@ -489,18 +453,18 @@ public class JCalc extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JCalc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frontend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JCalc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frontend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JCalc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frontend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JCalc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frontend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JCalc().setVisible(true);
+                new Frontend().setVisible(true);
             }
         });
     }
