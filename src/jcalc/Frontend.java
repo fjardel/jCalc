@@ -1,15 +1,16 @@
 package jcalc;
 
 public class Frontend extends javax.swing.JFrame {
-    
+
     public Frontend() {
- 
+
         initComponents();
-      
+
     }
-    
+
     private Backend back = new Backend();
-    
+    private boolean check = true;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,10 +49,8 @@ public class Frontend extends javax.swing.JFrame {
         jCalc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "jCalc", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
 
         displayMain.setEditable(false);
-        displayMain.setText("0");
 
         displayPrevious.setEditable(false);
-        displayPrevious.setText("0");
 
         javax.swing.GroupLayout displaysLayout = new javax.swing.GroupLayout(displays);
         displays.setLayout(displaysLayout);
@@ -320,145 +319,175 @@ public class Frontend extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"0");
-        
+
+        displayMain.setText(displayMain.getText() + "0");
+
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"1");
-        
+
+        displayMain.setText(displayMain.getText() + "1");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"2");
-        
+
+        displayMain.setText(displayMain.getText() + "2");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"3");
-        
+
+        displayMain.setText(displayMain.getText() + "3");
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"4");
-        
+
+        displayMain.setText(displayMain.getText() + "4");
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"5");
-        
+
+        displayMain.setText(displayMain.getText() + "5");
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"6");
-        
+
+        displayMain.setText(displayMain.getText() + "6");
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"7");
-        
+
+        displayMain.setText(displayMain.getText() + "7");
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"8");
-        
+
+        displayMain.setText(displayMain.getText() + "8");
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        
-        displayMain.setText(displayMain.getText()+"9");
-        
+
+        displayMain.setText(displayMain.getText() + "9");
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButtonDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDotActionPerformed
-      
-        if (!displayMain.getText().isEmpty()){
-            
-            displayMain.setText(displayMain.getText()+"."); 
+
+        if (!displayMain.getText().isEmpty()) { //Sobreescrevendo os pontos
+
+            displayMain.setText(displayMain.getText() + ".");
             displayMain.setText(displayMain.getText().replace("..", "."));
-        
+
         } else {
-            
-            displayMain.setText(""); 
+
+            cleanDisplayMain();
 
         }
-        
+
     }//GEN-LAST:event_jButtonDotActionPerformed
 
     private void jButtonCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCEActionPerformed
-        
-        if (!displayMain.getText().isEmpty()){
 
-            int sizeInput = displayMain.getText().length();
-            displayMain.setText(displayMain.getText().substring(0, sizeInput - 1));
-            
-        } else {
-            
-            displayMain.setText("");
-            
-        }
-        
+        cleanLastElement();
+
     }//GEN-LAST:event_jButtonCEActionPerformed
 
     private void jButtonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCActionPerformed
 
-        displayPrevious.setText("");
-        displayMain.setText("");
-        
+        cleanDisplayMain();
+        cleanDisplayPrevious();
+
     }//GEN-LAST:event_jButtonCActionPerformed
 
     private void jButtonSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSomaActionPerformed
-        
-        back.setValueA(displayMain.getText());
-        back.setOperator("+");
-        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
-        displayMain.setText("");
-        
+
+        back.setValueA(displayMain.getText()); //Altera o valor A
+        back.setOperator("+"); //Altera o operador
+        displayPrevious.setText(back.getValueA() + " " + back.getOperator() + " ");
+        cleanDisplayMain();
+
     }//GEN-LAST:event_jButtonSomaActionPerformed
 
     private void jButtonSubtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubtActionPerformed
-        
+
         back.setValueA(displayMain.getText());
         back.setOperator("-");
-        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
-        displayMain.setText("");
-        
+        displayPrevious.setText(back.getValueA() + " " + back.getOperator() + " ");
+        cleanDisplayMain();
+
     }//GEN-LAST:event_jButtonSubtActionPerformed
 
     private void jButtonMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultActionPerformed
-        
+
         back.setValueA(displayMain.getText());
         back.setOperator("*");
-        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
-        displayMain.setText("");
-        
+        displayPrevious.setText(back.getValueA() + " " + back.getOperator() + " ");
+        cleanDisplayMain();
+
     }//GEN-LAST:event_jButtonMultActionPerformed
 
     private void jButtonDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiviActionPerformed
-        
+
         back.setValueA(displayMain.getText());
         back.setOperator("/");
-        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
-        displayMain.setText("");
-        
+        displayPrevious.setText(back.getValueA() + " " + back.getOperator() + " ");
+        cleanDisplayMain();
+
     }//GEN-LAST:event_jButtonDiviActionPerformed
 
     private void jButtonResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultActionPerformed
 
-        back.setValueB(displayMain.getText());
-        displayPrevious.setText(displayPrevious.getText()+back.getValueB());
-        displayMain.setText(back.getResult());
-    
+        if (check == true) {
+
+            check = false;
+            back.setValueB(displayMain.getText());
+            displayPrevious.setText(displayPrevious.getText() + back.getValueB() + " ");
+            displayMain.setText(back.getResult());
+            
+        } else {
+            
+            check = true;
+            cleanDisplayPrevious();
+            displayPrevious.setText(displayMain.getText() + " " + back.getOperator() + " ");
+            
+        }
+
     }//GEN-LAST:event_jButtonResultActionPerformed
+
+    /* Metodos de limpeza dos Displays */
+    private void cleanDisplayMain() {
+
+        displayMain.setText("");
+
+    }
+
+    private void cleanDisplayPrevious() {
+
+        displayPrevious.setText("");
+
+    }
+
+    private void cleanLastElement() {
+
+        if (!displayMain.getText().isEmpty()) { //Apaga o ultimo valor
+
+            int sizeInput = displayMain.getText().length();
+            displayMain.setText(displayMain.getText().substring(0, sizeInput - 1));
+
+        } else {
+
+            displayMain.setText("");
+
+        }
+
+    }
 
     public static void main(String args[]) {
 
