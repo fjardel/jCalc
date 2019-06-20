@@ -1,75 +1,91 @@
 package jcalc;
 
 public class Backend {
-    
+
     private double a = 0;
     private double b = 0;
-    public double result = 0; 
-    private String op = null;
+    private double result = 0;
+    private String operator = null;
+
+    protected void setValueA(String a) {
+        
+        this.a = Double.valueOf(a);
+
+    }
     
-    protected void getValues(String value, String op){
-            
-        if (this.a == 0){
-            
-            a = Double.parseDouble(value);
-            
-        } else if (this.b == 0){
-            
-            b = Double.parseDouble(value);
-            
-        }
+    protected void setValueB(String b) {
         
-        if (this.op == null) {
-            
-            this.op = op;
-            
-        }
-        
-        if (this.a != 0 && this.b != 0 && this.op != null){
-            
-            this.result = calc();
-            clean();
-            
-        }
+        this.b = Double.valueOf(b);
         
     }
     
-    protected double calc(){
+    protected void setOperator(String op){
         
-        switch (op){
+        this.operator = op;
             
-            case "+":
-                
-                result = a+b;
-                break;
+    }
+    
+    protected String getValueA(){
+        
+        return String.valueOf(this.a);
+        
+    }
+    
+    protected String getValueB(){
+        
+        return String.valueOf(this.b);
+        
+    }
+    
+    protected String getOperator(){
+        
+        return this.operator;
+        
+    }
+    
+    protected String getResult(){
+        
+        this.result = calc();
+        return String.valueOf(this.result);
+        
+    }
+    
+    private double calc() {
+
+        if (this.a != 0 && this.b != 0 && this.operator != null) {
+
+            switch (this.operator) {
+
+                case "+":
+
+                    result = a + b;
+                    break;
+
+                case "-":
+
+                    result = a - b;
+                    break;
+
+                case "*":
+
+                    result = a * b;
+                    break;
+
+                case "/":
+
+                    result = a / b;
+                    break;
+
+            }
+
+            return result;
+
+        } else {
             
-            case "-":
-                
-                result = a-b;
-                break;
-            
-            case "*":
-                
-                result = a*b;
-                break;
-            
-            case "/":
-                
-                result = a/b;
-                break;
-            
+            return 0;
+        
         }
-        
-        return result;
-                
+
     }
-    
-    public void clean(){
-        
-        this.a = 0;
-        this.b = 0;
-        this.op = null;
-    
-    }
-    
+
 }

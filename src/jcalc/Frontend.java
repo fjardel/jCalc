@@ -16,8 +16,9 @@ public class Frontend extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jCalc = new javax.swing.JPanel();
-        display = new javax.swing.JPanel();
+        displays = new javax.swing.JPanel();
         displayMain = new javax.swing.JTextField();
+        displayPrevious = new javax.swing.JTextField();
         buttons = new javax.swing.JPanel();
         jButton0 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -47,6 +48,25 @@ public class Frontend extends javax.swing.JFrame {
         jCalc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "jCalc", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
 
         displayMain.setEditable(false);
+        displayMain.setText("0");
+
+        displayPrevious.setEditable(false);
+        displayPrevious.setText("0");
+
+        javax.swing.GroupLayout displaysLayout = new javax.swing.GroupLayout(displays);
+        displays.setLayout(displaysLayout);
+        displaysLayout.setHorizontalGroup(
+            displaysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(displayPrevious, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+            .addComponent(displayMain)
+        );
+        displaysLayout.setVerticalGroup(
+            displaysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(displaysLayout.createSequentialGroup()
+                .addComponent(displayPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(displayMain, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jButton0.setText("0");
         jButton0.addActionListener(new java.awt.event.ActionListener() {
@@ -255,37 +275,25 @@ public class Frontend extends javax.swing.JFrame {
                     .addComponent(jButtonResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        javax.swing.GroupLayout displayLayout = new javax.swing.GroupLayout(display);
-        display.setLayout(displayLayout);
-        displayLayout.setHorizontalGroup(
-            displayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(displayMain)
-            .addGroup(displayLayout.createSequentialGroup()
-                .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        displayLayout.setVerticalGroup(
-            displayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(displayLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(displayMain, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jCalcLayout = new javax.swing.GroupLayout(jCalc);
         jCalc.setLayout(jCalcLayout);
         jCalcLayout.setHorizontalGroup(
             jCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jCalcLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(display, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(displays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jCalcLayout.setVerticalGroup(
             jCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(display, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jCalcLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(displays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,8 +309,8 @@ public class Frontend extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCalc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getAccessibleContext().setAccessibleDescription("Calculadora Java");
@@ -403,43 +411,52 @@ public class Frontend extends javax.swing.JFrame {
 
     private void jButtonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCActionPerformed
 
-        back.clean();
+        displayPrevious.setText("");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonCActionPerformed
 
     private void jButtonSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSomaActionPerformed
         
-        back.getValues(displayMain.getText(), "+");
+        back.setValueA(displayMain.getText());
+        back.setOperator("+");
+        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonSomaActionPerformed
 
     private void jButtonSubtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubtActionPerformed
         
-        back.getValues(displayMain.getText(), "-");
+        back.setValueA(displayMain.getText());
+        back.setOperator("-");
+        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonSubtActionPerformed
 
     private void jButtonMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultActionPerformed
         
-        back.getValues(displayMain.getText(), "*");
+        back.setValueA(displayMain.getText());
+        back.setOperator("*");
+        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonMultActionPerformed
 
     private void jButtonDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiviActionPerformed
         
-        back.getValues(displayMain.getText(), "/");
+        back.setValueA(displayMain.getText());
+        back.setOperator("/");
+        displayPrevious.setText(back.getValueA()+" "+" "+back.getOperator()+" ");
         displayMain.setText("");
         
     }//GEN-LAST:event_jButtonDiviActionPerformed
 
     private void jButtonResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultActionPerformed
 
-        back.getValues(displayMain.getText(), null);
-        displayMain.setText(String.valueOf(back.result));
+        back.setValueB(displayMain.getText());
+        displayPrevious.setText(displayPrevious.getText()+back.getValueB());
+        displayMain.setText(back.getResult());
     
     }//GEN-LAST:event_jButtonResultActionPerformed
 
@@ -471,8 +488,9 @@ public class Frontend extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttons;
-    private javax.swing.JPanel display;
     private javax.swing.JTextField displayMain;
+    private javax.swing.JTextField displayPrevious;
+    private javax.swing.JPanel displays;
     private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
