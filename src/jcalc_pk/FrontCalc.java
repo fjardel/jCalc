@@ -46,7 +46,7 @@ public class FrontCalc extends JFrame {
 		setTitle("jCalc");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 315, 380);
+		setBounds(100, 100, 321, 380);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -56,14 +56,14 @@ public class FrontCalc extends JFrame {
 
 		txtPrevious = new JTextField();
 		txtPrevious.setEditable(false);
-		txtPrevious.setBounds(10, 11, 295, 20);
+		txtPrevious.setBounds(10, 19, 295, 20);
 		contentPane.add(txtPrevious);
 		txtPrevious.setColumns(10);
 
 		txtMain = new JTextField();
 		txtMain.setText("");
 		txtMain.setEditable(false);
-		txtMain.setBounds(10, 41, 295, 50);
+		txtMain.setBounds(10, 45, 295, 50);
 		contentPane.add(txtMain);
 		txtMain.setColumns(10);
 
@@ -198,7 +198,7 @@ public class FrontCalc extends JFrame {
 
 			}
 
-		// ++++++++++++++++++++++++++++++++ Buttons - Functions// ++++++++++++++++++++++++++++++++
+		// ++++++++++++++++++++++++++++++++ Buttons - Functions ++++++++++++++++++++++++++++++++
 
 		});
 		btnDot.setBounds(130, 285, 55, 55);
@@ -343,7 +343,7 @@ public class FrontCalc extends JFrame {
 
 			if (back.invalidOperation() == true) {
 
-				JOptionPane.showMessageDialog(null, "Nï¿½o ï¿½ possivel dividir por zero!");
+				JOptionPane.showMessageDialog(null, "Não é possivel dividir por zero!");
 
 			} else {
 
