@@ -46,7 +46,7 @@ public class FrontCalc extends JFrame {
 		setTitle("jCalc");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 315, 375);
+		setBounds(100, 100, 315, 380);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -56,14 +56,14 @@ public class FrontCalc extends JFrame {
 
 		txtPrevious = new JTextField();
 		txtPrevious.setEditable(false);
-		txtPrevious.setBounds(10, 11, 290, 20);
+		txtPrevious.setBounds(10, 11, 295, 20);
 		contentPane.add(txtPrevious);
 		txtPrevious.setColumns(10);
 
 		txtMain = new JTextField();
 		txtMain.setText("");
 		txtMain.setEditable(false);
-		txtMain.setBounds(10, 41, 290, 50);
+		txtMain.setBounds(10, 41, 295, 50);
 		contentPane.add(txtMain);
 		txtMain.setColumns(10);
 
@@ -78,7 +78,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn0.setBounds(10, 285, 110, 50);
+		btn0.setBounds(10, 285, 115, 55);
 		contentPane.add(btn0);
 
 		JButton btn1 = new JButton("1");
@@ -90,7 +90,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn1.setBounds(10, 224, 50, 50);
+		btn1.setBounds(10, 224, 55, 55);
 		contentPane.add(btn1);
 
 		JButton btn2 = new JButton("2");
@@ -102,7 +102,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn2.setBounds(70, 224, 50, 50);
+		btn2.setBounds(70, 224, 55, 55);
 		contentPane.add(btn2);
 
 		JButton btn3 = new JButton("3");
@@ -114,7 +114,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn3.setBounds(130, 224, 50, 50);
+		btn3.setBounds(130, 224, 55, 55);
 		contentPane.add(btn3);
 
 		JButton btn4 = new JButton("4");
@@ -126,7 +126,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn4.setBounds(10, 163, 50, 50);
+		btn4.setBounds(10, 163, 55, 55);
 		contentPane.add(btn4);
 
 		JButton btn5 = new JButton("5");
@@ -138,7 +138,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn5.setBounds(70, 163, 50, 50);
+		btn5.setBounds(70, 163, 55, 55);
 		contentPane.add(btn5);
 
 		JButton btn6 = new JButton("6");
@@ -150,7 +150,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn6.setBounds(130, 163, 50, 50);
+		btn6.setBounds(130, 163, 55, 55);
 		contentPane.add(btn6);
 
 		JButton btn7 = new JButton("7");
@@ -162,7 +162,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn7.setBounds(10, 102, 50, 50);
+		btn7.setBounds(10, 102, 55, 55);
 		contentPane.add(btn7);
 
 		JButton btn8 = new JButton("8");
@@ -174,7 +174,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn8.setBounds(70, 102, 50, 50);
+		btn8.setBounds(70, 102, 55, 55);
 		contentPane.add(btn8);
 
 		JButton btn9 = new JButton("9");
@@ -187,7 +187,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btn9.setBounds(130, 102, 50, 50);
+		btn9.setBounds(130, 102, 55, 55);
 		contentPane.add(btn9);
 
 		JButton btnDot = new JButton(".");
@@ -198,11 +198,10 @@ public class FrontCalc extends JFrame {
 
 			}
 
-			// ++++++++++++++++++++++++++++++++ Buttons - Functions
-			// ++++++++++++++++++++++++++++++++
+		// ++++++++++++++++++++++++++++++++ Buttons - Functions// ++++++++++++++++++++++++++++++++
 
 		});
-		btnDot.setBounds(130, 285, 50, 50);
+		btnDot.setBounds(130, 285, 55, 55);
 		contentPane.add(btnDot);
 
 		JButton btnCE = new JButton("CE");
@@ -214,7 +213,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnCE.setBounds(190, 102, 50, 50);
+		btnCE.setBounds(190, 102, 55, 55);
 		contentPane.add(btnCE);
 
 		JButton btnC = new JButton("C");
@@ -226,7 +225,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnC.setBounds(190, 163, 50, 50);
+		btnC.setBounds(190, 163, 55, 55);
 		contentPane.add(btnC);
 
 		// ++++++++++++++++++++++++++++++++ Buttons - Operators ++++++++++++++++++++++++++++++++
@@ -248,7 +247,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnSom.setBounds(250, 102, 50, 50);
+		btnSom.setBounds(250, 102, 55, 55);
 		contentPane.add(btnSom);
 
 		JButton btnSub = new JButton("-");
@@ -268,7 +267,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnSub.setBounds(250, 163, 50, 50);
+		btnSub.setBounds(250, 163, 55, 55);
 		contentPane.add(btnSub);
 
 		JButton btnMul = new JButton("*");
@@ -288,7 +287,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnMul.setBounds(250, 224, 50, 50);
+		btnMul.setBounds(250, 224, 55, 55);
 		contentPane.add(btnMul);
 
 		JButton btnDiv = new JButton("/");
@@ -308,7 +307,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnDiv.setBounds(250, 285, 50, 50);
+		btnDiv.setBounds(250, 285, 55, 55);
 		contentPane.add(btnDiv);
 
 		// ++++++++++++++++++++++++++++++++ Button - Result ++++++++++++++++++++++++++++++++
@@ -330,7 +329,7 @@ public class FrontCalc extends JFrame {
 			}
 
 		});
-		btnResult.setBounds(190, 224, 50, 111);
+		btnResult.setBounds(190, 224, 55, 116);
 		contentPane.add(btnResult);
 
 	}
