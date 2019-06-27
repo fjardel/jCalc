@@ -18,6 +18,29 @@ public class FrontCalc extends JFrame {
 	private BackCalc back = new BackCalc();
 	private boolean check = true;
 
+	public static void main(String[] args) { //Main
+
+		EventQueue.invokeLater(new Runnable() {
+
+			public void run() {
+
+				try {
+
+					FrontCalc frame = new FrontCalc();
+					frame.setVisible(true);
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				}
+
+			}
+
+		});
+
+	} 
+
 	public FrontCalc() {
 
 		setTitle("jCalc");
@@ -45,10 +68,9 @@ public class FrontCalc extends JFrame {
 		txtMain.setColumns(10);
 
 		// ++++++++++++++++++++++++++++++++ Buttons - Numbers ++++++++++++++++++++++++++++++++
-		
+
 		JButton btn0 = new JButton("0");
 		btn0.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("0");
@@ -61,7 +83,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btn1 = new JButton("1");
 		btn1.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("1");
@@ -74,7 +95,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btn2 = new JButton("2");
 		btn2.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("2");
@@ -86,9 +106,7 @@ public class FrontCalc extends JFrame {
 		contentPane.add(btn2);
 
 		JButton btn3 = new JButton("3");
-
 		btn3.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("3");
@@ -100,9 +118,7 @@ public class FrontCalc extends JFrame {
 		contentPane.add(btn3);
 
 		JButton btn4 = new JButton("4");
-
 		btn4.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("4");
@@ -115,7 +131,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btn5 = new JButton("5");
 		btn5.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("5");
@@ -128,7 +143,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btn6 = new JButton("6");
 		btn6.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("6");
@@ -141,7 +155,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btn7 = new JButton("7");
 		btn7.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("7");
@@ -154,7 +167,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btn8 = new JButton("8");
 		btn8.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("8");
@@ -168,7 +180,6 @@ public class FrontCalc extends JFrame {
 		JButton btn9 = new JButton("9");
 
 		btn9.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain("9");
@@ -181,22 +192,21 @@ public class FrontCalc extends JFrame {
 
 		JButton btnDot = new JButton(".");
 		btnDot.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				writeTxtMain(".");
 
 			}
 
-		// ++++++++++++++++++++++++++++++++ Buttons - Functions ++++++++++++++++++++++++++++++++
-			
+			// ++++++++++++++++++++++++++++++++ Buttons - Functions
+			// ++++++++++++++++++++++++++++++++
+
 		});
 		btnDot.setBounds(130, 285, 50, 50);
 		contentPane.add(btnDot);
 
 		JButton btnCE = new JButton("CE");
 		btnCE.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				removeLast();
@@ -209,7 +219,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btnC = new JButton("C");
 		btnC.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				cleanAllValues();
@@ -221,10 +230,9 @@ public class FrontCalc extends JFrame {
 		contentPane.add(btnC);
 
 		// ++++++++++++++++++++++++++++++++ Buttons - Operators ++++++++++++++++++++++++++++++++
-		
+
 		JButton btnSom = new JButton("+");
 		btnSom.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				if (!txtMain.getText().equals("")) {
@@ -245,7 +253,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btnSub = new JButton("-");
 		btnSub.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				if (!txtMain.getText().equals("")) {
@@ -266,7 +273,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btnMul = new JButton("*");
 		btnMul.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				if (!txtMain.getText().equals("")) {
@@ -287,7 +293,6 @@ public class FrontCalc extends JFrame {
 
 		JButton btnDiv = new JButton("/");
 		btnDiv.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				if (!txtMain.getText().equals("")) {
@@ -305,12 +310,11 @@ public class FrontCalc extends JFrame {
 		});
 		btnDiv.setBounds(250, 285, 50, 50);
 		contentPane.add(btnDiv);
-		
+
 		// ++++++++++++++++++++++++++++++++ Button - Result ++++++++++++++++++++++++++++++++
 
 		JButton btnResult = new JButton("=");
 		btnResult.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 
 				if (!txtMain.getText().equals("")) {
@@ -331,38 +335,16 @@ public class FrontCalc extends JFrame {
 
 	}
 
-	public static void main(String[] args) {
-
-		EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-
-				try {
-
-					FrontCalc frame = new FrontCalc();
-					frame.setVisible(true);
-
-				} catch (Exception e) {
-
-					e.printStackTrace();
-
-				}
-
-			}
-
-		});
-
-	} //This class make an operations with values
-
 	private void showResult(String input) {
 
-		if (check == true) { //Check is true. Means that the value A and the operator have already been passed
+		if (check == true) { // Check is true. Means that the value A and the operator have already been
+								// passed
 
-			back.setValueB(input); //Receive the value B
+			back.setValueB(input); // Receive the value B
 
 			if (back.invalidOperation() == true) {
 
-				JOptionPane.showMessageDialog(null, "Não é possivel dividir por zero!");
+				JOptionPane.showMessageDialog(null, "Nï¿½o ï¿½ possivel dividir por zero!");
 
 			} else {
 
@@ -382,7 +364,7 @@ public class FrontCalc extends JFrame {
 
 	}
 
-	private void cleanAllValues() { //Clear all values
+	private void cleanAllValues() { // Clear all values
 
 		txtMain.setText("");
 		txtPrevious.setText("");
@@ -390,7 +372,7 @@ public class FrontCalc extends JFrame {
 
 	}
 
-	private void removeLast() { //Remove last element in to txtMain
+	private void removeLast() { // Remove last element in to txtMain
 
 		int sizeTxt = txtMain.getText().length();
 
@@ -406,7 +388,7 @@ public class FrontCalc extends JFrame {
 
 	}
 
-	private void writeTxtMain(String input) { //Write in to txtMain
+	private void writeTxtMain(String input) { // Write in to txtMain
 
 		if (txtMain.getText().isEmpty() && input.equals(".")) {
 
@@ -415,7 +397,7 @@ public class FrontCalc extends JFrame {
 		} else {
 
 			txtMain.setText(txtMain.getText() + input);
-			txtMain.setText(txtMain.getText().replace("..", ".")); //Replace .. for .
+			txtMain.setText(txtMain.getText().replace("..", ".")); // Replace .. for .
 
 		}
 
